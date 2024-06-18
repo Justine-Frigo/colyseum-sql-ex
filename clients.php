@@ -22,11 +22,18 @@ $stmt = $pdo->query($sql);
 // 20 premiers clients
 // $sql = "SELECT * FROM clients LIMIT 20";
 
-// 20 premiers clients avec carte de fidélité
-// $sql = "SELECT * FROM clients WHERE card = 1 LIMIT 20";
+// Carte de fidélité
+// $sqlCards = "SELECT c.id, c.lastName, c.firstName, c.birthDate, c.cardNumber
+// FROM clients c
+// JOIN cards ca ON c.cardNumber = ca.cardNumber
+// WHERE ca.cardTypesId = 1;";
 
 // Récupérer tous les résultats
 $clients = $stmt->fetchAll(PDO::FETCH_ASSOC);
+// $stmtCards = $pdo->query($sqlCards);
+// $clients_with_loyalty = $stmtCards->fetchAll(PDO::FETCH_ASSOC);
+
+// print_r($clients_with_loyalty);
 ?>
 
 <!doctype html>
